@@ -235,6 +235,7 @@ void CartesianImpedanceExampleController::equilibriumPoseCallback(
   if (last_orientation_d_target.coeffs().dot(orientation_d_target_.coeffs()) < 0.0) {
     orientation_d_target_.coeffs() << -orientation_d_target_.coeffs();
   }
+  std::cout<<"test2\n" << std::endl;
 }
 
 }  // namespace franka_example_controllers

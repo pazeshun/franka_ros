@@ -27,9 +27,13 @@ find_package(Franka 0.7.0 REQUIRED)
 
 add_message_files(FILES
   JointTorqueComparison.msg
+  ArmsTargetPose.msg
 )
 
-generate_messages()
+generate_messages(DEPENDENCIES
+  std_msgs
+  geometry_msgs
+)
 
 generate_dynamic_reconfigure_options(
   cfg/compliance_param.cfg
@@ -70,6 +74,7 @@ add_library(franka_example_controllers
   src/cartesian_impedance_example_controller.cpp
   src/force_example_controller.cpp
   src/dual_arm_cartesian_impedance_example_controller.cpp
+  src/dual_arm_cartesian_pose_controller.cpp
   src/teleop_joint_pd_example_controller.cpp
 )
 

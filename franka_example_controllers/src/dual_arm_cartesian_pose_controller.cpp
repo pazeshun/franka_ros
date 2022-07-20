@@ -403,6 +403,7 @@ void DualArmCartesianPoseController::publishCurrentPose() {
         robot_state_left.O_T_EE.data()));           // NOLINT (readability-identifier-naming)
     tf::poseEigenToMsg(Ol_T_C, left_frame_pub_.msg_.pose);
     left_frame_pub_.msg_.header.frame_id = left_arm_id_ + "_link0";
+    left_frame_pub_.msg_.header.stamp = ros::Time::now();
     left_frame_pub_.unlockAndPublish();
   }
   if (right_frame_pub_.trylock()) {
@@ -412,6 +413,7 @@ void DualArmCartesianPoseController::publishCurrentPose() {
         robot_state_right.O_T_EE.data()));           // NOLINT (readability-identifier-naming)
     tf::poseEigenToMsg(Or_T_C, right_frame_pub_.msg_.pose);
     right_frame_pub_.msg_.header.frame_id = right_arm_id_ + "_link0";
+    right_frame_pub_.msg_.header.stamp = ros::Time::now();
     right_frame_pub_.unlockAndPublish();
   }
 }

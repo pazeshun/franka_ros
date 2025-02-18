@@ -9,9 +9,12 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
 )
 
-find_package(Franka 0.9.0 QUIET)
+find_package(Franka 0.14.1 QUIET)
 if(NOT Franka_FOUND)
-  find_package(Franka 0.8.0 REQUIRED)
+  find_package(Franka 0.9.0 QUIET)
+  if(NOT Franka_FOUND)
+    find_package(Franka 0.8.0 REQUIRED)
+  endif()
 endif()
 
 catkin_package(CATKIN_DEPENDS sensor_msgs roscpp)
